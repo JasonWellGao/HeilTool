@@ -3,7 +3,7 @@ package com.heil.PasswordGenerator.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -23,7 +23,7 @@ public class IndexController {
     }
 
     @ResponseBody
-    @RequestMapping("/build",method=RequestMethod.POST)
+    @RequestMapping(value="/build",method=RequestMethod.POST)
     public String bulidPassword() {
         return "It's building!";
     }
