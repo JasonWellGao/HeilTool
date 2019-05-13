@@ -26,8 +26,10 @@ public class IndexController {
 
     @ResponseBody
     @RequestMapping(value="/",method=RequestMethod.POST)
-    public String bulidPassword(@ModelAttribute PasswordParam passwordParam) {
-		System.out.println(passwordParam);
+    public String bulidPassword(@RequestParam(value="length") long length , @ModelAttribute PasswordParam passwordParam) {
+		System.out.println("length:" + length);
+		System.out.println("passwordParam.length:" + passwordParam.getLength());
+		System.out.println("passwordParam.charType:" + passwordParam.getCharType());
         return "It's building!";
     }
 }

@@ -2,8 +2,6 @@ package com.heil.passwordGenerator.pojo;
 
 import java.util.*;
 
-
-
 /**
  *
  * @author Jason <1878566968@qq.com> 
