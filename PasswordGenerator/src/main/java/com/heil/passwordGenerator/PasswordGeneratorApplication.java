@@ -1,4 +1,4 @@
-package com.heil.PasswordGenerator;
+package com.heil.passwordGenerator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

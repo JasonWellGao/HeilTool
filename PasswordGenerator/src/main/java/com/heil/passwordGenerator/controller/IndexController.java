@@ -1,10 +1,10 @@
-package com.heil.PasswordGenerator.controller;
+package com.heil.passwordGenerator.controller;
+
+import com.heil.passwordGenerator.pojo.PasswordParam;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *
@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class IndexController {
+
+    private PasswordParam passwordParam ;
     
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String index(ModelMap map) {
@@ -23,8 +25,9 @@ public class IndexController {
     }
 
     @ResponseBody
-    @RequestMapping(value="/build",method=RequestMethod.POST)
-    public String bulidPassword() {
+    @RequestMapping(value="/",method=RequestMethod.POST)
+    public String bulidPassword(@ModelAttribute PasswordParam passwordParam) {
+		System.out.println(passwordParam);
         return "It's building!";
     }
 }

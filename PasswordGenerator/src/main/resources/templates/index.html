@@ -6,5 +6,45 @@
 </head>
 <body>
 <h1 th:text="${title}">密码生成器</h1>
+<form method="post">
+<ul class="table">
+	<li class="">
+		<label>所用字符</label>
+		<div>
+			<span style="display:inline-block">
+				<input name="char[0]" type="checkbox" value="1" checked="checked" />
+				<label>A-Z</label>
+			</span>
+			<span style="display:inline-block">
+				<input name="char[1]" type="checkbox" value="1" checked="checked" />
+				<label>a-z</label>
+			</span>
+			<span style="display:inline-block">
+				<input name="char[2]" type="checkbox" value="1" checked="checked" />
+				<label>0-9</label>
+			</span>
+			<span style="display:inline-block">
+				<input name="char[3]" type="checkbox" value="1" />
+				<label></label>
+			</span>
+		</div>
+	</li>
+	<li>
+		<label>所用字符</label>
+		<div>
+			<span style="display:inline-block">
+				<input type="num" name="length"  value="6" />
+				<label for="ss_cd" class="shuru_div_jiange">位</label>
+			</span>
+		</div>
+	</li>
+	<li>
+		<label>结果</label>
+		<div class="result">
+		</div>
+	</li>
+</ul>
+<button type="submit">生成</button>
+</form>
 </body>
 </html>

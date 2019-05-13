@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.heil</groupId>
-	<artifactId>PasswordGenerator</artifactId>
+	<artifactId>passwordGenerator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>PasswordGenerator</name>
+	<name>passwordGenerator</name>
 	<description>密码生成器</description>
 
 	<properties>
