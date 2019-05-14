@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class PasswordParam {
 
-    private Map charType;
+    private Map<String,String> charType = new HashMap<String,String>();
     private Integer length;
 
 
