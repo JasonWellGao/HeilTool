@@ -29,12 +29,7 @@ public class IndexController {
     @ResponseBody
     @RequestMapping(value="/",method=RequestMethod.POST)
     public String bulidPassword(@RequestParam(value="length") long length , @ModelAttribute PasswordParam passwordParam) {
-		System.out.println("length:" + length);
-		System.out.println("passwordParam.length:" + passwordParam.getLength());
-		System.out.println("passwordParam.charType:" + passwordParam.getCharType());
-
 		Map<String,String> charType = passwordParam.getCharType();
-
 		Map<String, String> charMap = new HashMap<String, String>();
 		charMap.put("0", "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 		charMap.put("1", "abcdefghijklmnopqrstuvwxyz");
@@ -42,13 +37,11 @@ public class IndexController {
 		charMap.put("3", "!@#$%^&*");
 
 		StringBuffer str = new StringBuffer();
-
 		Iterator<Map.Entry<String, String>> iterator = charType.entrySet().iterator();
 		while(iterator.hasNext()){
 			Map.Entry<String, String> entry = iterator.next();
-			String key = entry.getKey();
-			if(Integer.parseInt(charType.get(key)) == 1)
-				str.append(charMap.get(key));
+			if(Integer.parseInt(entry.getValue()) == 1)
+				str.append(charMap.get(entry.getKey()));
 		}
 
 		int strLength = str.length();
