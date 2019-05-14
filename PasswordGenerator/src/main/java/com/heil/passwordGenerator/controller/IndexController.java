@@ -17,9 +17,6 @@ import org.springframework.web.bind.annotation.*;
  */
 @Controller
 public class IndexController {
-
-    private PasswordParam passwordParam ;
-    
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String index(ModelMap map) {
         map.addAttribute("title", "密码生成器~");
@@ -28,7 +25,7 @@ public class IndexController {
 
     @ResponseBody
     @RequestMapping(value="/",method=RequestMethod.POST)
-    public String bulidPassword(@RequestParam(value="length") long length , @ModelAttribute PasswordParam passwordParam) {
+    public String bulidPassword(@ModelAttribute PasswordParam passwordParam) {
 		Map<String,String> charType = passwordParam.getCharType();
 		Map<String, String> charMap = new HashMap<String, String>();
 		charMap.put("0", "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
@@ -48,7 +45,8 @@ public class IndexController {
 		Random random = new Random();
 		StringBuffer tmp =new StringBuffer();
 
-		for(int i=0;i<length;i++){
+		Integer length = passwordParam.getLength();
+		for(int i=0;i < length;i++){
 			int number=random.nextInt(strLength);
 			tmp.append(str.charAt(number));
 		}
