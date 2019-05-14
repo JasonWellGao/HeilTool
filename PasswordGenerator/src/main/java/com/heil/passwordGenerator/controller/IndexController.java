@@ -42,7 +42,11 @@ public class IndexController {
 		charMap.put("3", "!@#$%^&*");
 
 		StringBuffer str = new StringBuffer();
-		for(String key : charType.keySet()){
+
+		Iterator<Map.Entry<String, String>> iterator = charType.entrySet().iterator();
+		while(iterator.hasNext()){
+			Map.Entry<String, String> entry = iterator.next();
+			String key = entry.getKey();
 			if(Integer.parseInt(charType.get(key)) == 1)
 				str.append(charMap.get(key));
 		}
