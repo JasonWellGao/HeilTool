@@ -15,11 +15,11 @@ public class PasswordParam {
     private Integer length;
 
 
-    public Map getCharType() {
+    public Map<String,String> getCharType() {
         return charType;
     }
 
-    public void setCharType(Map charType) {
+    public void setCharType(Map<String,String> charType) {
         this.charType = charType;
     }
 
