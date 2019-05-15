@@ -33,14 +33,15 @@
 		<label>所用字符</label>
 		<div>
 			<span style="display:inline-block">
-				<input type="num" name="length"  value="6" />
+                <input type="num" name="length" th:value="${length}"  value="6" />
 				<label for="ss_cd" class="shuru_div_jiange">位</label>
 			</span>
 		</div>
 	</li>
 	<li>
 		<label>结果</label>
-		<div class="result">
+        <div class="result" th:text="${password}">
+            生成的密码
 		</div>
 	</li>
 </ul>

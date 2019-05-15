@@ -5,7 +5,7 @@ import com.heil.passwordGenerator.pojo.PasswordParam;
 import java.util.*;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.*;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -23,9 +23,8 @@ public class IndexController {
         return "index";
     }
 
-    @ResponseBody
     @RequestMapping(value="/",method=RequestMethod.POST)
-    public String bulidPassword(@ModelAttribute PasswordParam passwordParam) {
+    public String bulidPassword(@ModelAttribute PasswordParam passwordParam,ModelMap map) {
 		Map<String,String> charType = passwordParam.getCharType();
 		Map<String, String> charMap = new HashMap<String, String>();
 		charMap.put("0", "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
@@ -50,6 +49,9 @@ public class IndexController {
 			int number=random.nextInt(strLength);
 			tmp.append(str.charAt(number));
 		}
-		return tmp.toString();
+        map.addAttribute("password", tmp.toString());
+        map.addAttribute("title", "密码生成器~");
+        map.addAttribute("length", length);
+        return "index";
     }
 }
