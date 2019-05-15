@@ -45,6 +45,8 @@ public class IndexController {
 		StringBuffer tmp =new StringBuffer();
 
 		Integer length = passwordParam.getLength();
+		System.out.println(length);
+		length = length == null ? 6 : length;
 		for(int i=0;i < length;i++){
 			int number=random.nextInt(strLength);
 			tmp.append(str.charAt(number));
