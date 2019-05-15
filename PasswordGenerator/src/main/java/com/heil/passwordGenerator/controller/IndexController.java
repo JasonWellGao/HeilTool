@@ -20,6 +20,12 @@ public class IndexController {
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String index(ModelMap map) {
         map.addAttribute("title", "密码生成器~");
+        Map<String,String> charType = new HashMap<String, String>();
+		charType.put("0","1");
+		charType.put("1","1");
+		charType.put("2","1");
+		charType.put("3","1");
+        map.addAttribute("charType", charType);
         return "index";
     }
 
@@ -43,17 +49,23 @@ public class IndexController {
 		int strLength = str.length();
 		Random random = new Random();
 		StringBuffer tmp =new StringBuffer();
+		System.out.println(str);
 
 		Integer length = passwordParam.getLength();
-		System.out.println(length);
 		length = length == null ? 6 : length;
-		for(int i=0;i < length;i++){
-			int number=random.nextInt(strLength);
-			tmp.append(str.charAt(number));
+		if(str.length() == 0){
+			map.addAttribute("tips", "请选择字符类型");
+		}
+		else{
+			for(int i=0;i < length;i++){
+				int number=random.nextInt(strLength);
+				tmp.append(str.charAt(number));
+			}
 		}
         map.addAttribute("password", tmp.toString());
         map.addAttribute("title", "密码生成器~");
         map.addAttribute("length", length);
+        map.addAttribute("charType", charType);
         return "index";
     }
 }

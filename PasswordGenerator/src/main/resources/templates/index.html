@@ -12,20 +12,20 @@
 		<label>所用字符</label>
 		<div>
 			<span style="display:inline-block">
-				<input name="charType[0]" type="checkbox" value="1" checked="checked" />
+				<input name="charType[0]" type="checkbox" value="1" th:checked="${charType['0']}" />
 				<label>A-Z</label>
 			</span>
 			<span style="display:inline-block">
-				<input name="charType[1]" type="checkbox" value="1" checked="checked" />
+				<input name="charType[1]" type="checkbox" value="1" th:checked="${charType['1']}" />
 				<label>a-z</label>
 			</span>
 			<span style="display:inline-block">
-				<input name="charType[2]" type="checkbox" value="1" checked="checked" />
+				<input name="charType[2]" type="checkbox" value="1" th:checked="${charType['2']}" />
 				<label>0-9</label>
 			</span>
 			<span style="display:inline-block">
-				<input name="charType[3]" type="checkbox" value="1" />
-				<label></label>
+				<input name="charType[3]" type="checkbox" value="1" th:checked="${charType['3']}" />
+				<label>!@#$%^&amp;*</label>
 			</span>
 		</div>
 	</li>
@@ -43,6 +43,8 @@
         <div class="result" th:text="${password}">
             生成的密码
 		</div>
+	</li>
+	<li th:if="${tips}" th:text="${tips}">
 	</li>
 </ul>
 <button type="submit">生成</button>
