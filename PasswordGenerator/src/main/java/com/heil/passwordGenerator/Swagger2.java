@@ -31,8 +31,8 @@ public class Swagger2 {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Spring Boot中使用Swagger2构建RESTful APIs")
-                .description("https://github.com/orgs/heil-coder")
+                .title("密码生成器API")
+                .description("SpringBoot练手小工具")
                 .termsOfServiceUrl("https://github.com/orgs/heil-coder")
                 .contact("Jason")
                 .version("0.0.1")
