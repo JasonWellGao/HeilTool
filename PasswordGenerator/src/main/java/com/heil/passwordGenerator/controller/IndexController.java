@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import io.swagger.annotations.*;
+
 /**
  *
  * @author Jason <1878566968@qq.com>
@@ -15,8 +17,10 @@ import org.springframework.web.bind.annotation.*;
  * @github https://github.com/orgs/heil-coder
  *
  */
+@Api(description = "密码生成器~")
 @Controller
 public class IndexController {
+	@ApiOperation(value="访问密码生成器", notes="默认四种字符类型为选中状态")
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String index(ModelMap map) {
         map.addAttribute("title", "密码生成器~");
@@ -29,7 +33,12 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping(value="/",method=RequestMethod.POST)
+	@ApiOperation(value="请求生成随机密码", notes="发送预设的密码生成参数，生成随机密码")
+		@ApiImplicitParams({
+		@ApiImplicitParam(name = "charType", value = "字符类型", required = true, dataType = "charType")
+			,@ApiImplicitParam(name = "length", value = "密码长度", required = false, dataType = "Integer")
+		})
+	@RequestMapping(value="/",method=RequestMethod.POST)
     public String bulidPassword(@ModelAttribute PasswordParam passwordParam,ModelMap map) {
 		Map<String,String> charType = passwordParam.getCharType();
 		Map<String, String> charMap = new HashMap<String, String>();
