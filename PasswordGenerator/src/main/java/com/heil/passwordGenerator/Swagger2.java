@@ -1,5 +1,6 @@
 package com.heil.passwordGenerator;
 
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -17,6 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
+@PropertySource("classpath:swagger.properties")     //swagger.properties 引入
 public class Swagger2 {
 
     @Bean
@@ -34,7 +36,6 @@ public class Swagger2 {
                 .title("密码生成器API")
                 .description("SpringBoot练手小工具")
                 .termsOfServiceUrl("https://github.com/orgs/heil-coder")
-                .contact("Jason")
                 .version("0.0.1")
                 .build();
     }
