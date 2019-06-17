@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8" />
+        <title th:text="${title}">时间戳转换工具</title>
+        <style>
+        body{
+            text-align:center;
+        }
+        .main {
+            display:inline-block;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="main">
+            <h1 th:text="${title}">时间戳转换工具</h1>
+            <form method="post">
+                <ul class="table">
+                     <li>
+                        <label>时间戳</label>
+                        <div>
+                            <span style="display:inline-block">
+                                <input type="num" name="timeStamp" th:value="${timeStamp}"  value="******" />
+                            </span>
+                        </div>
+                    </li>
+                    <th:block th:if="${time}">
+                    <li>
+                        <label>结果</label>
+                        <div class="result" th:text="${time}">
+                            转换后的时间
+                        </div>
+                    </li>
+                    </th:block>
+                    <li th:if="${tips}" th:text="${tips}">
+                    </li>
+                </ul>
+                <button type="submit">转换</button>
+            </form>
+        </div>
+    </body>
+</html>
