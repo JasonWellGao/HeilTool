@@ -28,6 +28,9 @@ public class IndexController {
         return "index";
     }
 	@ApiOperation(value="访问时间戳转换工具", notes="输出当前时间以及对应时间戳")
+		@ApiImplicitParams({
+		@ApiImplicitParam(name = "timeStamp", value = "时间戳", required = true, dataType = "long")
+		})
     @RequestMapping(value="/", method=RequestMethod.POST)
     public String index(@RequestParam long timeStamp,ModelMap map) {
         map.addAttribute("title", "时间戳转换工具~");
