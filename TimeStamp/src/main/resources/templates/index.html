@@ -15,13 +15,21 @@
     <body>
         <div class="main">
             <h1 th:text="${title}">时间戳转换工具</h1>
+            <ul class="table">
+                <li>
+                    <label>当前时间戳：</label>
+                    <div>
+                        <a class="nowTimeStamp" href="javascript:;" th:text="${nowTimeStamp}"></a>
+                    </div>
+                </li>
+            </ul>
             <form method="post">
                 <ul class="table">
                      <li>
                         <label>时间戳</label>
                         <div>
                             <span style="display:inline-block">
-                                <input type="num" name="timeStamp" th:value="${timeStamp}"  value="******" />
+                                <input class="timeStamp" type="num" name="timeStamp" th:value="${timeStamp}"  value="******" />
                             </span>
                         </div>
                     </li>
@@ -40,4 +48,11 @@
             </form>
         </div>
     </body>
+    <script>
+        document.getElementsByClassName("nowTimeStamp")[0].onclick = function(){
+            nowTimeStampObj = document.getElementsByClassName("nowTimeStamp")[0];
+            console.log(nowTimeStampObj.innerHTML);
+            document.getElementsByClassName('timeStamp')[0].value = nowTimeStampObj.innerHTML;
+        }
+    </script>
 </html>

@@ -23,7 +23,9 @@ public class IndexController {
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String index(ModelMap map) {
         map.addAttribute("title", "时间戳转换工具~");
-        long timeStamp = System.currentTimeMillis()/1000;
+        long nowTimeStamp = System.currentTimeMillis()/1000;
+        long timeStamp = nowTimeStamp;
+        map.addAttribute("nowTimeStamp", nowTimeStamp);
         map.addAttribute("timeStamp", timeStamp);
         return "index";
     }
@@ -37,6 +39,9 @@ public class IndexController {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date(timeStamp * 1000);
         String time = simpleDateFormat.format(date);
+
+        long nowTimeStamp = System.currentTimeMillis()/1000;
+        map.addAttribute("nowTimeStamp", nowTimeStamp);
         map.addAttribute("timeStamp", timeStamp);
         map.addAttribute("time", time);
         return "index";
