@@ -35,7 +35,7 @@ public class IndexController {
 		@ApiImplicitParam(name = "timeStamp", value = "时间戳", required = true, dataType = "long")
 		})
     @RequestMapping(value="/", method=RequestMethod.POST,params = {"timeStamp"})
-    public String index(@RequestParam long timeStamp,@ApiIgnore ModelMap map) {
+    public String index(@RequestParam(value="timeStamp",defaultValue="0") long timeStamp,@ApiIgnore ModelMap map) {
         map.addAttribute("title", "时间戳转换工具~");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date(timeStamp * 1000);
@@ -60,7 +60,7 @@ public class IndexController {
     public String index(@RequestParam(value = "year",defaultValue = "1970",required = true) long year
             ,@RequestParam(value="month",defaultValue="1",required = true) int month
             ,@RequestParam(value="day",defaultValue="1",required = true) int day
-            ,@RequestParam(value="hour",defaultValue="0",required = true) int hour
+            ,@RequestParam(value="hour",defaultValue="8",required = true) int hour
             ,@RequestParam(value="minute",defaultValue="0",required = true) int minute
             ,@RequestParam(value="second",defaultValue="0",required = true) int second
             ,@ApiIgnore ModelMap map) {
@@ -74,6 +74,7 @@ public class IndexController {
         try {
             Date time = simpleDateFormat.parse(timeBuffer.toString());
             long timeStampResult = time.getTime();
+        System.out.println(timeStampResult);
             map.addAttribute("timeStampResult", timeStampResult/1000);
         }
         catch (ParseException e) {

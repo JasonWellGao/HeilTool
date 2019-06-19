@@ -72,11 +72,11 @@
                             </span>
                             <span>:</span>
                             <span style="display:inline-block">
-                                <input class="second" type="num" name="second" th:value="${day}"  value="******" />
+                                <input class="second" type="num" name="second" th:value="${second}"  value="******" />
                             </span>
                         </div>
                     </li>
-                    <th:block th:if="${timeStampResult}">
+                    <th:block th:if="${timeStampResult != null}">
                     <li>
                         <label>结果</label>
                         <div class="result" th:text="${timeStampResult}">
