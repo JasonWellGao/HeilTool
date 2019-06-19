@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.heil</groupId>
-	<artifactId>timeStamp</artifactId>
+	<artifactId>timestamp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>TimeStamp</name>
+	<name>Timestamp</name>
 	<description>时间戳转换工具</description>
 
 	<properties>
@@ -61,7 +61,7 @@
 	</dependencies>
 
 	<build>
-        <finalName>passwordGenerator</finalName>
+        <finalName>timeStamp</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

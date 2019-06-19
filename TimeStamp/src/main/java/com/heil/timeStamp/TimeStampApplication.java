@@ -1,4 +1,4 @@
-package com.heil.timeStamp;
+package com.heil.timestamp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 @SpringBootApplication
-public class TimeStampApplication extends WebMvcConfigurerAdapter{
+public class TimestampApplication extends WebMvcConfigurerAdapter{
 
 	public static void main(String[] args) {
-		SpringApplication.run(TimeStampApplication.class, args);
+		SpringApplication.run(TimestampApplication.class, args);
 	}
 
     @Override

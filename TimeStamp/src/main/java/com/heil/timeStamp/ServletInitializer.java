@@ -1,4 +1,4 @@
-package com.heil.timeStamp;
+package com.heil.timestamp;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
@@ -7,6 +7,6 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(TimeStampApplication.class);
+		return application.sources(TimestampApplication.class);
 	}
 }

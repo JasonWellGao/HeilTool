@@ -1,4 +1,4 @@
-package com.heil.timeStamp;
+package com.heil.timestamp;
 
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +26,7 @@ public class Swagger2 {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.heil.timeStamp.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.heil.timestamp.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

@@ -1,4 +1,4 @@
-package com.heil.timeStamp.controller;
+package com.heil.timestamp.controller;
 
 import java.util.*;
 import java.text.SimpleDateFormat;
@@ -24,27 +24,29 @@ public class IndexController {
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String index(@ApiIgnore ModelMap map ) {
         map.addAttribute("title", "时间戳转换工具~");
-        long nowTimeStamp = System.currentTimeMillis()/1000;
-        long timeStamp = nowTimeStamp;
-        map.addAttribute("nowTimeStamp", nowTimeStamp);
-        map.addAttribute("timeStamp", timeStamp);
+        long nowTimestamp = System.currentTimeMillis()/1000;
+        long timestamp = nowTimestamp;
+        map.addAttribute("nowTimestamp", nowTimestamp);
+        map.addAttribute("timestamp", timestamp);
+        this.getCalendar(map);
         return "index";
     }
 	@ApiOperation(value="时间戳转时间", notes="时间戳转时间并输出当前时间对应的时间戳")
 		@ApiImplicitParams({
-		@ApiImplicitParam(name = "timeStamp", value = "时间戳", required = true, dataType = "long")
+		@ApiImplicitParam(name = "timestamp", value = "时间戳", required = true, dataType = "long")
 		})
-    @RequestMapping(value="/", method=RequestMethod.POST,params = {"timeStamp"})
-    public String index(@RequestParam(value="timeStamp",defaultValue="0") long timeStamp,@ApiIgnore ModelMap map) {
+    @RequestMapping(value="/", method=RequestMethod.POST,params = {"timestamp"})
+    public String index(@RequestParam(value="timestamp",defaultValue="0") long timestamp,@ApiIgnore ModelMap map) {
         map.addAttribute("title", "时间戳转换工具~");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date(timeStamp * 1000);
+        Date date = new Date(timestamp * 1000);
         String timeResult = simpleDateFormat.format(date);
 
-        long nowTimeStamp = System.currentTimeMillis()/1000;
-        map.addAttribute("nowTimeStamp", nowTimeStamp);
-        map.addAttribute("timeStamp", timeStamp);
+        long nowTimestamp = System.currentTimeMillis()/1000;
+        map.addAttribute("nowTimestamp", nowTimestamp);
+        map.addAttribute("timestamp", timestamp);
         map.addAttribute("timeResult", timeResult);
+        this.getCalendar(map);
         return "index";
     }
 	@ApiOperation(value="时间转时间戳", notes="时间转时间戳并输出当前时间对应的时间戳")
@@ -73,16 +75,16 @@ public class IndexController {
             .append(hour).append(":").append(minute).append(":").append(second);
         try {
             Date time = simpleDateFormat.parse(timeBuffer.toString());
-            long timeStampResult = time.getTime();
-        System.out.println(timeStampResult);
-            map.addAttribute("timeStampResult", timeStampResult/1000);
+            long timestampResult = time.getTime();
+        System.out.println(timestampResult);
+            map.addAttribute("timestampResult", timestampResult/1000);
         }
         catch (ParseException e) {
-            long timeStampResult = 0;
-            map.addAttribute("timeStampResult", timeStampResult);
+            long timestampResult = 0;
+            map.addAttribute("timestampResult", timestampResult);
         }
-        long nowTimeStamp = System.currentTimeMillis()/1000;
-        map.addAttribute("nowTimeStamp", nowTimeStamp);
+        long nowTimestamp = System.currentTimeMillis()/1000;
+        map.addAttribute("nowTimestamp", nowTimestamp);
         map.addAttribute("year", year);
         map.addAttribute("month", month);
         map.addAttribute("day", day);
@@ -90,5 +92,15 @@ public class IndexController {
         map.addAttribute("minute", minute);
         map.addAttribute("second", second);
         return "index";
+    }
+    protected ModelMap getCalendar(ModelMap map){
+        Calendar now = Calendar.getInstance();  
+        map.addAttribute("year",now.get(Calendar.YEAR));
+        map.addAttribute("month",(now.get(Calendar.MONTH) + 1));
+        map.addAttribute("day",now.get(Calendar.DAY_OF_MONTH));
+        map.addAttribute("hour",now.get(Calendar.HOUR_OF_DAY));
+        map.addAttribute("minute",now.get(Calendar.MINUTE));
+        map.addAttribute("second",now.get(Calendar.SECOND));
+        return map;
     }
 }

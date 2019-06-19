@@ -19,7 +19,7 @@
                 <li>
                     <label>当前时间戳：</label>
                     <div>
-                        <a class="nowTimeStamp" href="javascript:;" th:text="${nowTimeStamp}"></a>
+                        <a class="nowTimestamp" href="javascript:;" th:text="${nowTimestamp}"></a>
                     </div>
                 </li>
             </ul>
@@ -29,7 +29,7 @@
                         <label>时间戳</label>
                         <div>
                             <span style="display:inline-block">
-                                <input class="timeStamp" type="num" name="timeStamp" th:value="${timeStamp}"  value="******" />
+                                <input class="timestamp" type="num" name="timestamp" th:value="${timestamp}"  value="******" />
                             </span>
                         </div>
                     </li>
@@ -41,7 +41,7 @@
                         </div>
                     </li>
                     </th:block>
-                    <li th:if="${tipsTimeStampToTime}" th:text="${tipsTimeStampToTime}">
+                    <li th:if="${tipsTimestampToTime}" th:text="${tipsTimestampToTime}">
                     </li>
                 </ul>
                 <button type="submit">转换</button>
@@ -76,15 +76,15 @@
                             </span>
                         </div>
                     </li>
-                    <th:block th:if="${timeStampResult != null}">
+                    <th:block th:if="${timestampResult} != null">
                     <li>
                         <label>结果</label>
-                        <div class="result" th:text="${timeStampResult}">
+                        <div class="result" th:text="${timestampResult}">
                             转换后的时间戳
                         </div>
                     </li>
                     </th:block>
-                    <li th:if="${tipsTimeToTimeStamp}" th:text="${tipsTimeToTimeStamp}">
+                    <li th:if="${tipsTimeToTimestamp}" th:text="${tipsTimeToTimestamp}">
                     </li>
                 </ul>
                 <button type="submit">转换</button>
@@ -92,10 +92,10 @@
         </div>
     </body>
     <script>
-        document.getElementsByClassName("nowTimeStamp")[0].onclick = function(){
-            nowTimeStampObj = document.getElementsByClassName("nowTimeStamp")[0];
-            console.log(nowTimeStampObj.innerHTML);
-            document.getElementsByClassName('timeStamp')[0].value = nowTimeStampObj.innerHTML;
+        document.getElementsByClassName("nowTimestamp")[0].onclick = function(){
+            nowTimestampObj = document.getElementsByClassName("nowTimestamp")[0];
+            console.log(nowTimestampObj.innerHTML);
+            document.getElementsByClassName('timestamp')[0].value = nowTimestampObj.innerHTML;
         }
     </script>
 </html>
