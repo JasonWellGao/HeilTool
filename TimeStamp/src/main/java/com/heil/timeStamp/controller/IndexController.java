@@ -76,7 +76,6 @@ public class IndexController {
         try {
             Date time = simpleDateFormat.parse(timeBuffer.toString());
             long timestampResult = time.getTime();
-        System.out.println(timestampResult);
             map.addAttribute("timestampResult", timestampResult/1000);
         }
         catch (ParseException e) {
