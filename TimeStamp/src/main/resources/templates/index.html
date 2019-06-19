@@ -33,15 +33,58 @@
                             </span>
                         </div>
                     </li>
-                    <th:block th:if="${time}">
+                    <th:block th:if="${timeResult}">
                     <li>
                         <label>结果</label>
-                        <div class="result" th:text="${time}">
+                        <div class="result" th:text="${timeResult}">
                             转换后的时间
                         </div>
                     </li>
                     </th:block>
-                    <li th:if="${tips}" th:text="${tips}">
+                    <li th:if="${tipsTimeStampToTime}" th:text="${tipsTimeStampToTime}">
+                    </li>
+                </ul>
+                <button type="submit">转换</button>
+            </form>
+            <form method="post">
+                <ul class="table">
+                     <li>
+                        <label>时间：</label>
+                        <div>
+                            <span style="display:inline-block">
+                                <input class="year" type="num" name="year" th:value="${year}"  value="******" />
+                            </span>
+                            <span>年</span>
+                            <span style="display:inline-block">
+                                <input class="month" type="num" name="month" th:value="${month}"  value="******" />
+                            </span>
+                            <span>月</span>
+                            <span style="display:inline-block">
+                                <input class="day" type="num" name="day" th:value="${day}"  value="******" />
+                            </span>
+                            <span>日</span>
+                            <span style="display:inline-block">
+                                <input class="hour" type="num" name="hour" th:value="${hour}"  value="******" />
+                            </span>
+                            <span>:</span>
+                            <span style="display:inline-block">
+                                <input class="minute" type="num" name="minute" th:value="${minute}"  value="******" />
+                            </span>
+                            <span>:</span>
+                            <span style="display:inline-block">
+                                <input class="second" type="num" name="second" th:value="${day}"  value="******" />
+                            </span>
+                        </div>
+                    </li>
+                    <th:block th:if="${timeStampResult}">
+                    <li>
+                        <label>结果</label>
+                        <div class="result" th:text="${timeStampResult}">
+                            转换后的时间戳
+                        </div>
+                    </li>
+                    </th:block>
+                    <li th:if="${tipsTimeToTimeStamp}" th:text="${tipsTimeToTimeStamp}">
                     </li>
                 </ul>
                 <button type="submit">转换</button>
