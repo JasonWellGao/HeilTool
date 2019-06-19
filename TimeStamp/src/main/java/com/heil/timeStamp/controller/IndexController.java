@@ -2,6 +2,7 @@ package com.heil.timeStamp.controller;
 
 import java.util.*;
 import java.text.SimpleDateFormat;
+import java.text.ParseException;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -56,13 +57,37 @@ public class IndexController {
         ,@ApiImplicitParam(name = "second", value = "秒", required = true, dataType = "int")
         })
     @RequestMapping(value="/", method=RequestMethod.POST,params = {"year","month","day","hour","minute","second"})
-    public String index(@RequestParam(value = "year",defaultValue = "1970",required = true) long year,@RequestParam(value="month",defaultValue="1",required = true) int month,@RequestParam(value="day",defaultValue="1",required = true) int day
-            ,@RequestParam(value="hour",defaultValue="0",required = true) int hour,@RequestParam(value="minute",defaultValue="0",required = true) int minute,@RequestParam(value="second",defaultValue="0",required = true) int second
+    public String index(@RequestParam(value = "year",defaultValue = "1970",required = true) long year
+            ,@RequestParam(value="month",defaultValue="1",required = true) int month
+            ,@RequestParam(value="day",defaultValue="1",required = true) int day
+            ,@RequestParam(value="hour",defaultValue="0",required = true) int hour
+            ,@RequestParam(value="minute",defaultValue="0",required = true) int minute
+            ,@RequestParam(value="second",defaultValue="0",required = true) int second
             ,@ApiIgnore ModelMap map) {
         map.addAttribute("title", "时间戳转换工具~");
 
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        StringBuffer timeBuffer = new StringBuffer(Long.toString(year));
+        timeBuffer.append("-").append(month).append('-').append(day)
+            .append(" ")
+            .append(hour).append(":").append(minute).append(":").append(second);
+        try {
+            Date time = simpleDateFormat.parse(timeBuffer.toString());
+            long timeStampResult = time.getTime();
+            map.addAttribute("timeStampResult", timeStampResult/1000);
+        }
+        catch (ParseException e) {
+            long timeStampResult = 0;
+            map.addAttribute("timeStampResult", timeStampResult);
+        }
         long nowTimeStamp = System.currentTimeMillis()/1000;
         map.addAttribute("nowTimeStamp", nowTimeStamp);
+        map.addAttribute("year", year);
+        map.addAttribute("month", month);
+        map.addAttribute("day", day);
+        map.addAttribute("hour", hour);
+        map.addAttribute("minute", minute);
+        map.addAttribute("second", second);
         return "index";
     }
 }
