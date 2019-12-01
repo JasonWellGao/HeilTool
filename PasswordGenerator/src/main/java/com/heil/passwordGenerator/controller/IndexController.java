@@ -56,7 +56,7 @@ public class IndexController {
 		}
 
 		int strLength = str.length();
-		Random random = new Random();
+		Random random = new Random(System.currentTimeMillis());
 		StringBuffer tmp =new StringBuffer();
 
 		Integer length = passwordParam.getLength();
