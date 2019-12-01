@@ -1,4 +1,4 @@
-package com.heil.Timestamp;
+package com.heil.timestamp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
